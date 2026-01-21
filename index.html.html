@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יוצר תוכן שיווקי בעברית - AI</title>
+    
+    <!-- Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out;
+        }
+        .animate-slideInRight {
+            animation: slideInRight 0.8s ease-out;
+        }
+        .animate-slideInLeft {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        .animate-spin {
+            animation: spin 3s linear infinite;
+        }
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900 text-white">
+    
+    <!-- Background decorations -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    </div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <!-- Header -->
+        <div class="text-center mb-12 sm:mb-16 animate-fadeIn">
+            <div class="inline-flex items-center gap-3 mb-6 bg-purple-500/10 backdrop-blur-sm px-4 sm:px-6 py-3 rounded-full border border-purple-500/20">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-purple-400 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                </svg>
+                <span class="text-sm sm:text-base text-purple-300 font-medium">מופעל על ידי AI מתקדם</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-black mb-4 bg-gradient-to-l from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent px-4">
+                יוצר תוכן שיווקי בעברית
+            </h1>
+            <p class="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed px-4">
+                צור תוכן שיווקי מקצועי ומושך תשומת לב בשניות ספורות באמצעות בינה מלאכותית
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6 sm:gap-8">
+            <!-- Input Section -->
+            <div class="space-y-6 animate-slideInRight">
+                <div class="bg-slate-900/50 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-slate-700/50 shadow-2xl">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-6 flex items-center gap-3">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        פרטי העסק שלך
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-3">
+                                ספר לנו על העסק או המוצר שלך
+                            </label>
+                            <textarea
+                                id="businessInfo"
+                                placeholder="לדוגמה: אנחנו מציעים שירותי עיצוב פנים יוקרתיים לדירות ובתים פרטיים. התמחות בסגנון מודרני ומינימליסטי..."
+                                class="w-full h-32 bg-slate-800/50 border border-slate-600 rounded-2xl px-4 py-3 text-white placeholder-slate-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all outline-none resize-none"
+                            ></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-3">
+                                סוג התוכן
+                            </label>
+                            <div class="grid grid-cols-2 gap-3" id="contentTypes">
+                                <button onclick="selectContentType('instagram')" data-type="instagram" class="content-type-btn p-3 sm:p-4 rounded-2xl border-2 transition-all duration-300 bg-gradient-to-br from-purple-500 to-pink-500 border-transparent shadow-lg scale-105">
+                                    <svg class="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg>
+                                    <span class="text-xs sm:text-sm font-semibold block">פוסט אינסטגרם</span>
+                                </button>
+                                <button onclick="selectContentType('facebook')" data-type="facebook" class="content-type-btn p-3 sm:p-4 rounded-2xl border-2 transition-all duration-300 bg-slate-800/30 border-slate-700 hover:border-slate-600 hover:bg-slate-800/50">
+                                    <svg class="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                    <span class="text-xs sm:text-sm font-semibold block">מודעת פייסבוק</span>
+                                </button>
+                                <button onclick="selectContentType('landing')" data-type="landing" class="content-type-btn p-3 sm:p-4 rounded-2xl border-2 transition-all duration-300 bg-slate-800/30 border-slate-700 hover:border-slate-600 hover:bg-slate-800/50">
+                                    <svg class="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                    <span class="text-xs sm:text-sm font-semibold block">תוכן לדף נחיתה</span>
+                                </button>
+                                <button onclick="selectContentType('email')" data-type="email" class="content-type-btn p-3 sm:p-4 rounded-2xl border-2 transition-all duration-300 bg-slate-800/30 border-slate-700 hover:border-slate-600 hover:bg-slate-800/50">
+                                    <svg class="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <span class="text-xs sm:text-sm font-semibold block">ניוזלטר</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-3">
+                                טון הכתיבה
+                            </label>
+                            <div class="grid grid-cols-2 gap-3" id="tones">
+                                <button onclick="selectTone('friendly')" data-tone="friendly" class="tone-btn py-2.5 sm:py-3 px-3 sm:px-4 rounded-2xl border-2 transition-all duration-300 font-semibold text-sm bg-purple-600 border-purple-500 shadow-lg scale-105">
+                                    ידידותי
+                                </button>
+                                <button onclick="selectTone('professional')" data-tone="professional" class="tone-btn py-2.5 sm:py-3 px-3 sm:px-4 rounded-2xl border-2 transition-all duration-300 font-semibold text-sm bg-slate-800/30 border-slate-700 hover:border-slate-600 hover:bg-slate-800/50">
+                                    מקצועי
+                                </button>
+                                <button onclick="selectTone('exciting')" data-tone="exciting" class="tone-btn py-2.5 sm:py-3 px-3 sm:px-4 rounded-2xl border-2 transition-all duration-300 font-semibold text-sm bg-slate-800/30 border-slate-700 hover:border-slate-600 hover:bg-slate-800/50">
+                                    נלהב ומרגש
+                                </button>
+                                <button onclick="selectTone('humorous')" data-tone="humorous" class="tone-btn py-2.5 sm:py-3 px-3 sm:px-4 rounded-2xl border-2 transition-all duration-300 font-semibold text-sm bg-slate-800/30 border-slate-700 hover:border-slate-600 hover:bg-slate-800/50">
+                                    הומוריסטי
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="errorMessage" class="hidden bg-red-500/10 border border-red-500/30 rounded-2xl p-4 text-red-300 text-sm"></div>
+
+                        <button
+                            id="generateBtn"
+                            onclick="generateContent()"
+                            class="w-full bg-gradient-to-l from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-3 sm:py-4 rounded-2xl font-bold text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-purple-500/50 hover:scale-105 flex items-center justify-center gap-3"
+                        >
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                            </svg>
+                            צור תוכן
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Output Section -->
+            <div class="animate-slideInLeft">
+                <div class="bg-slate-900/50 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-slate-700/50 shadow-2xl h-full">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-3">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                            </svg>
+                            התוכן שלך
+                        </h2>
+                        <button
+                            id="copyBtn"
+                            onclick="copyToClipboard()"
+                            class="hidden items-center gap-2 bg-slate-800 hover:bg-slate-700 px-3 sm:px-4 py-2 rounded-xl transition-all"
+                        >
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="text-xs sm:text-sm">העתק</span>
+                        </button>
+                    </div>
+
+                    <div id="outputArea" class="bg-slate-800/50 border border-slate-700 rounded-2xl p-4 sm:p-6 min-h-[300px] sm:min-h-[400px]">
+                        <div class="h-full flex items-center justify-center text-slate-500">
+                            <div class="text-center">
+                                <svg class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                </svg>
+                                <p class="text-base sm:text-lg">התוכן שלך יופיע כאן</p>
+                                <p class="text-xs sm:text-sm mt-2">מלא את הפרטים והקלק על "צור תוכן"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="mt-12 sm:mt-16 grid sm:grid-cols-3 gap-4 sm:gap-6 animate-fadeIn" style="animation-delay: 0.3s;">
+            <div class="bg-slate-900/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-4 sm:p-6 text-center hover:bg-slate-900/50 transition-all duration-300 hover:scale-105">
+                <h3 class="text-lg sm:text-xl font-bold mb-2 text-purple-400">מהיר וקל</h3>
+                <p class="text-sm sm:text-base text-slate-400">תוכן איכותי תוך שניות</p>
+            </div>
+            <div class="bg-slate-900/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-4 sm:p-6 text-center hover:bg-slate-900/50 transition-all duration-300 hover:scale-105">
+                <h3 class="text-lg sm:text-xl font-bold mb-2 text-purple-400">מותאם אישית</h3>
+                <p class="text-sm sm:text-base text-slate-400">טון וסגנון לפי הצורך שלך</p>
+            </div>
+            <div class="bg-slate-900/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-4 sm:p-6 text-center hover:bg-slate-900/50 transition-all duration-300 hover:scale-105">
+                <h3 class="text-lg sm:text-xl font-bold mb-2 text-purple-400">מקצועי</h3>
+                <p class="text-sm sm:text-base text-slate-400">תוכן ברמה שיווקית גבוהה</p>
+            </div>
+        </div>
+
+        <!-- API Key Notice -->
+        <div class="mt-8 bg-yellow-500/10 border border-yellow-500/30 rounded-2xl p-6 text-center">
+            <h3 class="text-xl font-bold mb-2 text-yellow-400">⚠️ שים לב!</h3>
+            <p class="text-slate-300 mb-4">כדי להשתמש באפליקציה זו, עליך להזין את מפתח ה-API שלך מ-Anthropic</p>
+            <button onclick="showApiKeyModal()" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-xl transition-all">
+                הזן מפתח API
+            </button>
+        </div>
+    </div>
+
+    <!-- API Key Modal -->
+    <div id="apiKeyModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl p-8 max-w-md mx-4">
+            <h3 class="text-2xl font-bold mb-4 text-purple-400">הזן מפתח API</h3>
+            <p class="text-slate-300 mb-4 text-sm">
+                קבל מפתח חינם מ-<a href="https://console.anthropic.com/" target="_blank" class="text-purple-400 underline">Anthropic Console</a>
+            </p>
+            <input
+                type="password"
+                id="apiKeyInput"
+                placeholder="sk-ant-api03-..."
+                class="w-full bg-slate-800/50 border border-slate-600 rounded-2xl px-4 py-3 text-white placeholder-slate-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all outline-none mb-4"
+            />
+            <div class="flex gap-3">
+                <button onclick="saveApiKey()" class="flex-1 bg-purple-600 hover:bg-purple-700 py-3 rounded-2xl font-bold transition-all">
+                    שמור
+                </button>
+                <button onclick="closeApiKeyModal()" class="flex-1 bg-slate-800 hover:bg-slate-700 py-3 rounded-2xl font-bold transition-all">
+                    ביטול
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedContentType = 'instagram';
+        let selectedTone = 'friendly';
+        let apiKey = localStorage.getItem('anthropic_api_key') || '';
+
+        function selectContentType(type) {
+            selectedContentType = type;
+            document.querySelectorAll('.content-type-btn').forEach(btn => {
+                if (btn.dataset.type === type) {
+                    btn.className = 'content-type-btn p-3 sm:p-4 rounded-2xl border-2 transition-all duration-300 bg-gradient-to-br from-purple-500 to-pink-500 border-transparent shadow-lg scale-105';
+                } else {
+                    btn.className = 'content-type-btn p-3 sm:p-4 rounded-2xl border-2 transition-all duration-300 bg-slate-800/30 border-slate-700 hover:border-slate-600 hover:bg-slate-800/50';
+                }
+            });
+        }
+
+        function selectTone(tone) {
+            selectedTone = tone;
+            document.querySelectorAll('.tone-btn').forEach(btn => {
+                if (btn.dataset.tone === tone) {
+                    btn.className = 'tone-btn py-2.5 sm:py-3 px-3 sm:px-4 rounded-2xl border-2 transition-all duration-300 font-semibold text-sm bg-purple-600 border-purple-500 shadow-lg scale-105';
+                } else {
+                    btn.className = 'tone-btn py-2.5 sm:py-3 px-3 sm:px-4 rounded-2xl border-2 transition-all duration-300 font-semibold text-sm bg-slate-800/30 border-slate-700 hover:border-slate-600 hover:bg-slate-800/50';
+                }
+            });
+        }
+
+        function showApiKeyModal() {
+            document.getElementById('apiKeyModal').classList.remove('hidden');
+            document.getElementById('apiKeyModal').classList.add('flex');
+        }
+
+        function closeApiKeyModal() {
+            document.getElementById('apiKeyModal').classList.add('hidden');
+            document.getElementById('apiKeyModal').classList.remove('flex');
+        }
+
+        function saveApiKey() {
+            const key = document.getElementById('apiKeyInput').value.trim();
+            if (key) {
+                apiKey = key;
+                localStorage.setItem('anthropic_api_key', key);
+                closeApiKeyModal();
+                alert('מפתח API נשמר בהצלחה!');
+            } else {
+                alert('אנא הזן מפתח API תקין');
+            }
+        }
+
+        async function generateContent() {
+            const businessInfo = document.getElementById('businessInfo').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+            const generateBtn = document.getElementById('generateBtn');
+            const outputArea = document.getElementById('outputArea');
+            const copyBtn = document.getElementById('copyBtn');
+
+            if (!businessInfo) {
+                errorMessage.textContent = 'אנא הזן מידע על העסק או המוצר שלך';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            if (!apiKey) {
+                showApiKeyModal();
+                return;
+            }
+
+            errorMessage.classList.add('hidden');
+            copyBtn.classList.add('hidden');
+
+            const prompts = {
+                instagram: `צור פוסט אינסטגרם מושך בעברית עבור: ${businessInfo}. הטון צריך להיות ${selectedTone === 'friendly' ? 'ידידותי וחם' : selectedTone === 'professional' ? 'מקצועי ואמין' : selectedTone === 'exciting' ? 'נלהב ומרגש' : 'הומוריסטי ומשעשע'}. כלול אמוג'י רלוונטיים והשטאגים. התוכן צריך להיות קצר ומושך תשומת לב.`,
+                facebook: `צור מודעת פייסבוק משכנעת בעברית עבור: ${businessInfo}. הטון צריך להיות ${selectedTone === 'friendly' ? 'ידידותי' : selectedTone === 'professional' ? 'מקצועי' : selectedTone === 'exciting' ? 'נלהב' : 'הומוריסטי'}. כלול כותרת חזקה, תיאור מפורט, וקריאה לפעולה ברורה.`,
+                landing: `צור תוכן לדף נחיתה בעברית עבור: ${businessInfo}. כלול: כותרת ראשית מושכת, תת-כותרת, 3-4 יתרונות עיקריים, וקריאה לפעולה. הטון: ${selectedTone === 'friendly' ? 'ידידותי' : selectedTone === 'professional' ? 'מקצועי' : selectedTone === 'exciting' ? 'נלהב' : 'הומוריסטי'}.`,
+                email: `צור תוכן לניוזלטר מעניין בעברית עבור: ${businessInfo}. כלול נושא אימייל מושך, פתיחה חזקה, גוף מסר ערכי, וקריאה לפעולה. הטון: ${selectedTone === 'friendly' ? 'ידידותי' : selectedTone === 'professional' ? 'מקצועי' : selectedTone === 'exciting' ? 'נלהב' : 'הומוריסטי'}.`,
+            };
+
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = `
+                <div class="w-5 h-5 border-3 border-white/30 border-t-white rounded-full animate-spin"></div>
+                יוצר תוכן מדהים...
+            `;
+
+            outputArea.innerHTML = '<div class="h-full flex items-center justify-center"><div class="w-12 h-12 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin"></div></div>';
+
+            try {
+                const response = await fetch('https://api.anthropic.com/v1/messages', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': apiKey,
+                        'anthropic-version': '2023-06-01'
+                    },
+                    body: JSON.stringify({
+                        model: 'claude-sonnet-4-20250514',
+                        max_tokens: 1000,
+                        messages: [
+                            {
+                                role: 'user',
+                                content: prompts[selectedContentType]
+                            }
+                        ]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('שגיאה ביצירת התוכן - בדוק את מפתח ה-API');
+                }
+
+                const data = await response.json();
+                const content = data.content
+                    .map(item => item.type === 'text' ? item.text : '')
+                    .filter(Boolean)
+                    .join('\n');
+
+                outputArea.innerHTML = `<div class="text-slate-200 text-sm sm:text-base leading-relaxed whitespace-pre-wrap">${content}</div>`;
+                outputArea.dataset.content = content;
+                copyBtn.classList.remove('hidden');
+                copyBtn.classList.add('flex');
+
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.textContent = error.message || 'אירעה שגיאה ביצירת התוכן. אנא נסה שוב.';
+                errorMessage.classList.remove('hidden');
+                outputArea.innerHTML = `
+                    <div class="h-full flex items-center justify-center text-slate-500">
+                        <div class="text-center">
+                            <svg class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                            </svg>
+                            <p class="text-base sm:text-lg">התוכן שלך יופיע כאן</p>
+                            <p class="text-xs sm:text-sm mt-2">מלא את הפרטים והקלק על "צור תוכן"</p>
+                        </div>
+                    </div>
+                `;
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.innerHTML = `
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                    </svg>
+                    צור תוכן
+                `;
+            }
+        }
+
+        function copyToClipboard() {
+            const content = document.getElementById('outputArea').dataset.content;
+            const copyBtn = document.getElementById('copyBtn');
+            
+            navigator.clipboard.writeText(content).then(() => {
+                copyBtn.innerHTML = `
+                    <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs sm:text-sm text-green-400">הועתק!</span>
+                `;
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = `
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                        <span class="text-xs sm:text-sm">העתק</span>
+                    `;
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
